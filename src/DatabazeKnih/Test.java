@@ -54,6 +54,7 @@ public class Test {
             System.out.println("6 .. vyhledání knihy");
             System.out.println("7 .. díla daného autora");
             System.out.println("8 .. vyhledání knihy podle žánru");
+            System.out.println("9 .. výpis vypůjčených knih");
 
             //....
 
@@ -102,10 +103,13 @@ public class Test {
                         Databaze.knihyAutora(knihy);
                         break;
                 case 8:
-                    System.out.println("Vyhladání knih podle žánru");
+                    System.out.println("Vyhledání knih podle žánru");
                         Databaze.knihyPodleZanru(knihy);
                         break;
                 case 9:
+                    System.out.println("Výpis vypůjčených knih");
+                        Databaze.vypujceneKnihy(knihy);
+                        break;
 
             }
         }

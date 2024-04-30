@@ -196,16 +196,28 @@ public class Databaze {
         Iterator<Kniha> itr = knihy.iterator();
         while (itr.hasNext()) {
             Kniha kniha = itr.next();
-            System.out.println(" Jméno: " + kniha.getJmeno()
-                    + ", Autor: " + kniha.getAutor()
-                    + ", rok vydání: " + kniha.getRokVydani()
-                    + ", Dostupnost: " + kniha.getDostupnost());
             if (kniha instanceof Romany) {
                 Romany romany = (Romany) kniha;
-                System.out.println("Žanr: " + romany.getZanr());
+                System.out.println(" Jméno: "       + kniha.getJmeno()
+                                 + ", Autor: "      + kniha.getAutor()
+                                 + ", žanr: "       + romany.getZanr()
+                                 + ", rok vydání: " + kniha.getRokVydani()
+                                 + ", stav: "       + kniha.getDostupnost()
+
+
+                );
+
+                System.out.println();
             } else {
                 Ucebnice ucebnice = (Ucebnice) kniha;
-                System.out.println("Ročník: " + ucebnice.getRocnik());
+                System.out.println(" Jméno: "       + kniha.getJmeno()
+                                 + ", Autor: "      + kniha.getAutor()
+                                 + ", ročník: "     + ucebnice.getRocnik()
+                                 + ", rok vydání: " + kniha.getRokVydani()
+                                 + ", stav: "       + kniha.getDostupnost()
+
+
+                );
 
             }
 
@@ -223,19 +235,24 @@ public class Databaze {
 
         while (itr.hasNext()) {
             Kniha kniha = itr.next();
-            if (kniha.getJmeno().equals(hledanyNazev)) {
-                System.out.println(" Jméno: " + kniha.getJmeno()
-                        + ", Autor: " + kniha.getAutor()
-                        + ", rok vydání: " + kniha.getRokVydani()
-                        + ", Dostupnost: " + kniha.getDostupnost());
-                if (kniha instanceof Romany) {
-                    Romany romany = (Romany) kniha;
-                    System.out.println("Žanr: " + romany.getZanr());
-                } else {
-                    Ucebnice ucebnice = (Ucebnice) kniha;
-                    System.out.println("Ročník: " + ucebnice.getRocnik());
+            if (kniha instanceof Romany) {
+                Romany romany = (Romany) kniha;
+                System.out.println(" Jméno: "      + kniha.getJmeno()
+                                + ", Autor: "      + kniha.getAutor()
+                                + ", rok vydání: " + kniha.getRokVydani()
+                                + ", žanr: "       + romany.getZanr()
 
-                }
+                );
+
+                System.out.println();
+            } else {
+                Ucebnice ucebnice = (Ucebnice) kniha;
+                System.out.println(" Jméno: "       + kniha.getJmeno()
+                                 + ", Autor: "      + kniha.getAutor()
+                                 + ", rok vydání: " + kniha.getRokVydani()
+                                 + ", ročník: "     + ucebnice.getRocnik()
+
+                );
                 return;
             }
             break;
@@ -270,17 +287,24 @@ public class Databaze {
 
 
         for (Kniha kniha : knihyAutora) {
-            System.out.println("Autor: " + kniha.getAutor()
-                    + ", Jméno: "      + kniha.getJmeno()
-                    + ", rok vydání: " + kniha.getRokVydani()
-                    + ", Dostupnost: " + kniha.getDostupnost()
-            );
             if (kniha instanceof Romany) {
                 Romany romany = (Romany) kniha;
-                System.out.println("Žanr: " + romany.getZanr());
+                System.out.println(" Jméno: "       + kniha.getJmeno()
+                                 + ", Autor: "      + kniha.getAutor()
+                                 + ", rok vydání: " + kniha.getRokVydani()
+                                 + ", žanr: "       + romany.getZanr()
+
+                );
+
+                System.out.println();
             } else {
                 Ucebnice ucebnice = (Ucebnice) kniha;
-                System.out.println("Ročník: " + ucebnice.getRocnik());
+                System.out.println(" Jméno: "       + kniha.getJmeno()
+                                + ", Autor: "       + kniha.getAutor()
+                                + ", rok vydání: "  + kniha.getRokVydani()
+                                + ", ročník: "      + ucebnice.getRocnik()
+
+                );
 
             }
         }
@@ -300,14 +324,39 @@ public class Databaze {
                 Romany romany = (Romany) kniha;
                 if (romany.getZanr() == hledanyZanr) {
                     System.out.println("Jméno: " + kniha.getJmeno()
-                            + ", Autor: " + kniha.getAutor()
-                            + ", Rok vydání: " + kniha.getRokVydani()
-                            + ", Dostupnost: " + kniha.getDostupnost()
-                            + ", Žánr: " + romany.getZanr());
+                            + ", Autor: "        + kniha.getAutor()
+                            + ", Rok vydání: "   + kniha.getRokVydani()
+                            + ", Dostupnost: "   + kniha.getDostupnost()
+                            + ", Žánr: "         + romany.getZanr());
                 }
             }
         }
     }
- //   public static void
+    public static void vypujceneKnihy(Set<Kniha> knihy) {
 
+        Iterator<Kniha> itr = knihy.iterator();
+        while (itr.hasNext()) {
+            Kniha kniha = itr.next();
+            if (!kniha.dostupnost) {
+
+                if (kniha instanceof Romany) {
+                    Romany romany = (Romany) kniha;
+                    System.out.println(" Jméno: " + kniha.getJmeno()
+                            + ", Autor: " + kniha.getAutor()
+                            + ", rok vydání: " + kniha.getRokVydani()
+                            + ", žanr: " + romany.getZanr()
+                            + ", druh knihy: " + romany.getDruh()
+                    );
+                } else {
+                    Ucebnice ucebnice = (Ucebnice) kniha;
+                    System.out.println(" Jméno: " + kniha.getJmeno()
+                            + ", Autor: " + kniha.getAutor()
+                            + ", rok vydání: " + kniha.getRokVydani()
+                            + ", ročník: " + ucebnice.getRocnik()
+                            + ", druh knihy: " + ucebnice.getDruh()
+                    );
+                }
+            }
+        }
+    }
 }

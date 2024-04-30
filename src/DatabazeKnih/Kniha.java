@@ -45,7 +45,7 @@ public abstract class Kniha implements Comparable <Kniha> {
     public void setDostupnost(boolean dostupnost) {
         this.dostupnost = dostupnost;
     }
-   public abstract String getDruh();
+    public abstract String getDruh();
 
     @Override
     public int compareTo(Kniha o) {
