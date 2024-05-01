@@ -1,7 +1,4 @@
 package DatabazeKnih;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.TreeSet;
 
 public abstract class Kniha implements Comparable <Kniha> {
 

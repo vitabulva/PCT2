@@ -4,9 +4,8 @@ import java.util.*;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
-import static DatabazeKnih.Funkce.scanner;
-import static DatabazeKnih.Romany.Zanr.*;
-import static DatabazeKnih.Test.pouzeCelaCisla;
+
+import static DatabazeKnih.Funkce.pouzeCelaCisla;
 
 
 public class Databaze {

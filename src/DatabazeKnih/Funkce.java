@@ -1,15 +1,42 @@
 package DatabazeKnih;
+
 import java.util.Scanner;
 import java.util.Set;
 
 import static DatabazeKnih.Romany.Zanr.*;
-import static DatabazeKnih.Test.pouzeCelaCisla;
-
 
 public class Funkce {
 
     public static Scanner scanner = new Scanner(System.in);
     static Databaze databaze = new Databaze();
+
+    public static int pouzeCelaCisla(Scanner sc){
+        int cislo=0;
+        try{
+            cislo = sc.nextInt();
+        }
+        catch (Exception e){
+            System.out.println("Nastala vyjímka typu"+e.toString());
+            System.out.println("Zadejte prosím cele čislo");
+            sc.next();
+            cislo = pouzeCelaCisla(sc);
+        }
+        return cislo;
+    }
+
+    public static float pouzeCela(Scanner sc){
+        float cislo = 0;
+        try{
+            cislo = sc.nextFloat();
+        }
+        catch (Exception e){
+            System.out.println("Nastala vyjímka typu "+e.toString());
+            System.out.println("zadejte prosim cislo ");
+            sc.nextLine();
+            cislo = pouzeCelaCisla(sc);
+        }
+        return cislo;
+    }
 
     public static void addRoman() {
 

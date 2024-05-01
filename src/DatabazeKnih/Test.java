@@ -1,40 +1,13 @@
 package DatabazeKnih;
 
-import javax.xml.crypto.Data;
 import java.util.Scanner;
-import java.util.TreeSet;
 
+import static DatabazeKnih.Funkce.pouzeCelaCisla;
 import static DatabazeKnih.Databaze.knihy;
 
 public class Test {
 
-    public static int pouzeCelaCisla(Scanner sc){
-        int cislo=0;
-        try{
-            cislo = sc.nextInt();
-        }
-        catch (Exception e){
-            System.out.println("Nastala vyjímka typu"+e.toString());
-            System.out.println("Zadejte prosím cele čislo");
-            sc.next();
-            cislo = pouzeCelaCisla(sc);
-        }
-        return cislo;
-    }
 
-    public static float pouzeCela(Scanner sc){
-        float cislo = 0;
-        try{
-            cislo = sc.nextFloat();
-        }
-        catch (Exception e){
-            System.out.println("Nastala vyjímka typu "+e.toString());
-            System.out.println("zadejte prosim cislo ");
-            sc.nextLine();
-            cislo = pouzeCelaCisla(sc);
-        }
-        return cislo;
-    }
     public static void main(String [] args){
 
         Scanner sc=new Scanner(System.in);
