@@ -1,6 +1,10 @@
 package DatabazeKnih;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.Set;
+
 
 import static DatabazeKnih.Funkce.pouzeCelaCisla;
 import static DatabazeKnih.Databaze.knihy;
@@ -19,15 +23,19 @@ public class Test {
         while (run)
         {
             System.out.println("Vítej v databázi knih! zde jsou možnosti:");
-            System.out.println("1 .. vložení nové knihu");
-            System.out.println("2 .. úprava parametrů knihy");
-            System.out.println("3 .. smazání knihy");
-            System.out.println("4 .. vrácení/vypůjčení knihy");
-            System.out.println("5 .. výpis knih z databáze");
-            System.out.println("6 .. vyhledání knihy");
-            System.out.println("7 .. díla daného autora");
-            System.out.println("8 .. vyhledání knihy podle žánru");
-            System.out.println("9 .. výpis vypůjčených knih");
+            System.out.println("1  .. vložení nové knihu");
+            System.out.println("2  .. úprava parametrů knihy");
+            System.out.println("3  .. smazání knihy");
+            System.out.println("4  .. vrácení/vypůjčení knihy");
+            System.out.println("5  .. výpis knih z databáze");
+            System.out.println("6  .. vyhledání knihy");
+            System.out.println("7  .. díla daného autora");
+            System.out.println("8  .. vyhledání knihy podle žánru");
+            System.out.println("9  .. výpis vypůjčených knih");
+            System.out.println("10 .. ulozeni databaze do souboru");
+            System.out.println("11 .. nacteni databaze ze souboru");
+            System.out.println("12 .. ukonceni aplikace");
+
 
             //....
 
@@ -83,6 +91,27 @@ public class Test {
                     System.out.println("Výpis vypůjčených knih");
                         Databaze.vypujceneKnihy(knihy);
                         break;
+               case 10:
+                    try {
+                        sc.nextLine(); // vyprazdneni scanneru
+                        System.out.println("Zadejte jmeno souboru pro nacteni: ");
+                        String jmeno = sc.nextLine();
+                        Funkce.ulozKnihuDoSouboru(jmeno); // predani jmena do metody loadFromFile
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 11:
+                    String jmeno;
+                    System.out.println("Zadejte jméno souboru pro nahrání");
+                    jmeno = sc.next() + sc.nextLine();
+                    Funkce.nacteniZeSouboru(jmeno);
+                    break;
+                case 12:
+                    run=false;
+                    break;
 
             }
         }

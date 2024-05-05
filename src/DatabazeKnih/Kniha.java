@@ -42,6 +42,10 @@ public abstract class Kniha implements Comparable <Kniha> {
     public void setDostupnost(boolean dostupnost) {
         this.dostupnost = dostupnost;
     }
+    public boolean getStav() {
+        return dostupnost;
+    }
+
     public abstract String getDruh();
 
     @Override

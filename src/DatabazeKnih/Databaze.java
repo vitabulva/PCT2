@@ -1,5 +1,6 @@
 package DatabazeKnih;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.Comparator;
 import java.util.Set;
@@ -8,7 +9,7 @@ import java.util.TreeSet;
 import static DatabazeKnih.Funkce.pouzeCelaCisla;
 
 
-public class Databaze {
+public class Databaze implements Serializable {
     private String nazev;
     static Set<Kniha> knihy = new TreeSet<Kniha>(new Comparator<Kniha>() {
 
