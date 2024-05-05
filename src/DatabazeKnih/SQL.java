@@ -26,7 +26,7 @@ public class SQL {
         conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\sqlite\\db\\knihovna");
+            conn = DriverManager.getConnection("jdbc:sqlite:C:\\sqlite\\db\\Databaze");
         }
         catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -47,10 +47,10 @@ public class SQL {
         String sql_k = "CREATE TABLE IF NOT EXISTS knihy ("
                 + "id integer PRIMARY KEY,"
                 + "jmeno varchar NOT NULL,"
-                + "rocnik integer NOT NULL,"
+                + "autor varchar NOT NULL,"
+                + "rokVydani integer NOT NULL,"
                 + "dostupnost bit NOT NULL,"
-                + "typ integer,"
-                + "property integer,"
+                + "typ integer NOT NULL,"
                 + "knihaid integer FOREIGN KEY )";
 
             Statement stmt = conn.createStatement();
@@ -76,13 +76,13 @@ public class SQL {
         }
         return false;
     }
-    public boolean insertBook(Kniha kniha) {
+    public boolean insertKnihy(Kniha kniha) {
         if (conn==null) return false;
         try {
             numberOfBook++;
-            String sql = "INSERT INTO knihy(id,jmeno,autor,rocnik,dostupnost,typ,property) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO knihy(jmeno,autor,rokVydani,dostupnost,typ) VALUES(?,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, numberOfBook);
+          //  pstmt.setInt(1, numberOfBook);
             pstmt.setString(2, kniha.getJmeno());
             pstmt.setString(3, kniha.getAutor());
             pstmt.setInt(4, kniha.getRokVydani());

@@ -13,6 +13,12 @@ public class Databaze implements Serializable {
     private String nazev;
     static Set<Kniha> knihy = new TreeSet<Kniha>(new Comparator<Kniha>() {
 
+        public void Databaze(){
+            if(!SQL.getInstance().connect())System.out.println("fail");
+            knihy = new TreeSet<>(SQL.getInstance().knihyDatabasePull());
+            SQL.getInstance().disconnect();
+        }
+
         @Override
         public int compare(Kniha k1, Kniha k2) {
             return k1.getJmeno().compareTo(k2.getJmeno());
@@ -359,4 +365,14 @@ public class Databaze implements Serializable {
             }
         }
     }
+    public void ulozDatabazy() {
+        SQL.getInstance().connect();
+        SQL.getInstance().vyprazdniTabulku();
+        SQL.getInstance().novaTabulka();
+        for(Kniha book:knihy) {
+            SQL.getInstance().insertKnihy(book);
+        }
+        SQL.getInstance().disconnect();
+    }
+
 }
