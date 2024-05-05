@@ -183,21 +183,6 @@ public class Funkce implements Serializable {
         return hledanyZanr;
     }
 
-   /* public static void ulozKnihuDoSouboru(Set<Kniha> knihy, String jmeno) {
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream(knihy.getJmeno() + ".ser");
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(knihy);
-            objectOut.close();
-            fileOut.close();
-            System.out.println("Kniha uložena do souboru: " + knihy.getJmeno() + ".ser");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
-
     public static void ulozKnihuDoSouboru(String soubor) {
 
         String jmeno;
@@ -235,10 +220,10 @@ public class Funkce implements Serializable {
         int rocnik;
         String typ;
 
-        try (Scanner load = new Scanner(new FileReader(jmeno))) // deklarovany scanner pro cteni ze souboru
+        try (Scanner load = new Scanner(new FileReader(jmeno)))
         {
             int i = 0;
-            while (load.hasNextLine()) // dokud je dalsi scannovatelna vec s souboru pokracuj
+            while (load.hasNext())
             {
                 jmeno = load.next();
                 autor = load.next();
@@ -246,20 +231,15 @@ public class Funkce implements Serializable {
                 dostupnost = load.nextBoolean();
                 typ = load.next();
 
-
                 if (Romany.Zanr.contains(typ)) {
                     Romany.Zanr zanr = Romany.Zanr.valueOf(typ);
                     Romany roman = new Romany(jmeno, autor, rokvydani, dostupnost, zanr);
                     databaze.pridejKnihu(roman);
 
                 } else {
-
                     Ucebnice ucebnice = new Ucebnice(jmeno, autor, rokvydani, dostupnost, Integer.parseInt(typ));
                     databaze.pridejKnihu(ucebnice);
-
                 }
-
-
                 i++;
             }
         } catch (IOException e) {
@@ -267,7 +247,6 @@ public class Funkce implements Serializable {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Nebyl inicializovan array nebo pocet studentu je vetsi nez array");
         }
-
         return false;
     }
 

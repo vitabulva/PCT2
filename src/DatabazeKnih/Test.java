@@ -1,10 +1,6 @@
 package DatabazeKnih;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.Set;
-
 
 import static DatabazeKnih.Funkce.pouzeCelaCisla;
 import static DatabazeKnih.Databaze.knihy;
@@ -32,8 +28,8 @@ public class Test {
             System.out.println("7  .. díla daného autora");
             System.out.println("8  .. vyhledání knihy podle žánru");
             System.out.println("9  .. výpis vypůjčených knih");
-            System.out.println("10 .. ulozeni databaze do souboru");
-            System.out.println("11 .. nacteni databaze ze souboru");
+            System.out.println("10 .. ulozeni knihy do souboru");
+            System.out.println("11 .. nacteni knihy ze souboru");
             System.out.println("12 .. ukonceni aplikace");
 
 
@@ -93,10 +89,10 @@ public class Test {
                         break;
                case 10:
                     try {
-                        sc.nextLine(); // vyprazdneni scanneru
-                        System.out.println("Zadejte jmeno souboru pro nacteni: ");
+                        sc.nextLine();
+                        System.out.println("Zadejte jmeno souboru pro uložení: ");
                         String jmeno = sc.nextLine();
-                        Funkce.ulozKnihuDoSouboru(jmeno); // predani jmena do metody loadFromFile
+                        Funkce.ulozKnihuDoSouboru(jmeno);
                     }
                     catch (Exception e)
                     {
